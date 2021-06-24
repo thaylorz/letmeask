@@ -9,6 +9,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            > div {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 16px;
+
+                button {
+                    height: 40px;
+                }
+            }
         }
 
         > img {
@@ -94,6 +105,10 @@
                     }
                 }
             }
+        }
+
+        .question-list {
+            margin-top: 32px;
         }
     }
 }

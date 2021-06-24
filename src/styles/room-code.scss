@@ -25,4 +25,8 @@
         font-size: 14px;
         font-weight: 500;
     }
+
+    &:not(:disabled):hover {
+        filter: brightness(0.9);
+    }
 }
