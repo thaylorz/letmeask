@@ -18,7 +18,9 @@ export function Home() {
 	const [authEmail, setAuthEmail] = useState('');
 	const [authPassword, setAuthPassword] = useState('');
 
-	async function handleLogin() {
+	async function handleLoginWithEmail(event: FormEvent) {
+		event.preventDefault();
+
 		return;
 	}
 
@@ -90,32 +92,42 @@ export function Home() {
 				<div className="main-content">
 					<img src={logoImage} alt="Letmeask" />
 					<div className="login-wrapper">
-						<form className="login-form" onSubmit={handleLogin}>
+						<form className="login-form" onSubmit={handleLoginWithEmail}>
 							<input
 								type="email"
 								placeholder="Email"
 								onChange={event => setAuthEmail(event.target.value)}
 								value={authEmail}
+								required
 							/>
 							<input
 								type="password"
 								placeholder="Password"
 								onChange={event => setAuthPassword(event.target.value)}
 								value={authPassword}
+								required
 							/>
-							<Button
-								type="submit"
-								text="Login"
-								styleButton={
-									{
-										backgroundColor: "#fff",
-										border: "1px solid #317ff3",
-										color: "#317ff3"
+							<div className="login-button-content">
+								<Button
+									type="submit"
+									text="Sign in"
+									styleButton={
+										{
+											backgroundColor: "#fff",
+											border: "1px solid #317ff3",
+											color: "#317ff3"
+										}
 									}
-								}
-							/>
+								/>
+								<Button
+									type="submit"
+									text="Sign up"
+									styleButton={{ backgroundColor: "#317FF3" }
+									}
+								/>
+							</div>
 						</form>
-						<div className="login-button-content">
+						<div className="social-midia-button-content">
 							<Button
 								srcIcon={appleIconImage}
 								altTextIcon="Logo da Apple"

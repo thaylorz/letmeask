@@ -7,11 +7,7 @@ type AuthContextType = {
     loginInWithGoogle: () => Promise<void>;
 };
 
-type UserType = {
-    id: string;
-    name: string;
-    avatar: string;
-};
+type UserType = firebase.User | null;
 
 type AuthContextProviderProps = {
     children: ReactNode
@@ -25,17 +21,11 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                const { displayName, photoURL, uid } = user
-
-                if (!displayName || !photoURL) {
+                if (!user.displayName || !user.photoURL) {
                     throw new Error('Missing information from Google Account.')
                 }
 
-                setUser({
-                    id: uid,
-                    name: displayName,
-                    avatar: photoURL
-                });
+                setUser(user);
             }
         })
 
@@ -44,23 +34,28 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         };
     }, []);
 
-    async function loginInWithGoogle() {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    async function handleLoginWithEmail(email: string, password: string) {
+        const { user } = await auth.signInWithEmailAndPassword(email, password);
 
-        const result = await auth.signInWithPopup(provider);
-
-        if (result.user) {
-            const { displayName, photoURL, uid } = result.user
-
-            if (!displayName || !photoURL) {
+        if (user) {
+            if (!user.displayName || !user.photoURL) {
                 throw new Error('Missing information from Google Account.')
             }
 
-            setUser({
-                id: uid,
-                name: displayName,
-                avatar: photoURL
-            });
+            setUser(user);
+        }
+    }
+
+    async function loginInWithGoogle() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        const { user } = await auth.signInWithPopup(provider);
+
+        if (user) {
+            if (!user.displayName || !user.photoURL) {
+                throw new Error('Missing information from Google Account.')
+            }
+
+            setUser(user);
         }
     }
 

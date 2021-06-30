@@ -72,6 +72,12 @@
       .login-button-content {
         display: flex;
         flex-direction: row;
+        gap: 24px;
+      }
+
+      .social-midia-button-content {
+        display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 24px;
