@@ -1,17 +1,17 @@
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
-import { Button } from '../components/Button';
+import { Button } from '../../components/Button';
 import { FormEvent, useState } from 'react';
-import illustrationGift from '../assets/images/illustration.gif';
-import logoImage from '../assets/images/logo.svg';
-import googleIconImage from '../assets/images/google-icon.svg';
-import facebookIconImage from '../assets/images/facebook-icon.svg';
-import appleIconImage from '../assets/images/apple-icon.svg';
-import githubIconImage from '../assets/images/github-icon.svg';
-import '../styles/auth.scss';
-import { database } from '../services/firebase';
+import illustrationGift from '../../assets/images/illustration.gif';
+import logoImage from '../../assets/images/logo.svg';
+import googleIconImage from '../../assets/images/google-icon.svg';
+import facebookIconImage from '../../assets/images/facebook-icon.svg';
+import appleIconImage from '../../assets/images/apple-icon.svg';
+import githubIconImage from '../../assets/images/github-icon.svg';
+import './login.scss';
+import { database } from '../../services/firebase';
 
-export function Home() {
+export function Login() {
 	const history = useHistory();
 	const { user, loginInWithGoogle } = useAuth();
 	const [roomCode, setRoomCode] = useState('');
@@ -22,6 +22,12 @@ export function Home() {
 		event.preventDefault();
 
 		return;
+	}
+
+	async function handleSignUpNewUser(event: FormEvent) {
+		event.preventDefault();
+
+		history.push('/signup');
 	}
 
 	async function handleLoginWithApple() {
@@ -120,10 +126,10 @@ export function Home() {
 									}
 								/>
 								<Button
-									type="submit"
+									type="button"
 									text="Sign up"
-									styleButton={{ backgroundColor: "#317FF3" }
-									}
+									styleButton={{ backgroundColor: "#317FF3" }}
+									onClick={handleSignUpNewUser}
 								/>
 							</div>
 						</form>

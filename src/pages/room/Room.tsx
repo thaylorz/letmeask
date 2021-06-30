@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import logoImg from '../assets/images/logo.svg';
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
-import '../styles/room.scss';
+import { Button } from '../../components/Button';
+import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode';
+import { useAuth } from '../../hooks/useAuth';
+import { useRoom } from '../../hooks/useRoom';
+import { database } from '../../services/firebase';
+import './room.scss';
 
 type RoomParams = {
     id: string;
@@ -36,8 +36,8 @@ export function Room() {
         const question = {
             content: newQuestion,
             author: {
-                name: user.name,
-                avatar: user.avatar
+                name: user.displayName,
+                avatar: user.photoURL
             },
             isHighlighted: false,
             isAnswered: false
@@ -53,7 +53,7 @@ export function Room() {
             await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
         } else {
             await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-                authorId: user?.id
+                authorId: user?.uid
             });
         }
     }
@@ -82,8 +82,8 @@ export function Room() {
                     <div className="form-footer">
                         {user ? (
                             <div className="user-info">
-                                <img src={user.avatar} alt={user.name} />
-                                <span>{user.name}</span>
+                                <img src={user.photoURL || undefined} alt={user.displayName || undefined} />
+                                <span>{user.displayName}</span>
                             </div>
                         ) : (
                             <span>Para enviar uma pergunta, <button>faça seu login</button></span>

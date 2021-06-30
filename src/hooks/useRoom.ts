@@ -56,7 +56,7 @@ export function useRoom(roomId: string) {
 						isAnswered: value.isAnswered,
 						likeCount: Object.values(value.likes ?? {}).length,
 						likeId: Object.entries(value.likes ?? {}).find(
-							([key, like]) => like.authorId === user?.id
+							([key, like]) => like.authorId === user?.uid
 						)?.[0],
 					};
 				}
@@ -69,7 +69,7 @@ export function useRoom(roomId: string) {
 		return () => {
 			roomRef.off("value");
 		};
-	}, [roomId, user?.id]);
+	}, [roomId, user?.uid]);
 
 	return { questions, title };
 }

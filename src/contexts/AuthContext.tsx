@@ -7,7 +7,7 @@ type AuthContextType = {
     loginInWithGoogle: () => Promise<void>;
 };
 
-type UserType = firebase.User | null;
+type UserType = firebase.User | undefined;
 
 type AuthContextProviderProps = {
     children: ReactNode
