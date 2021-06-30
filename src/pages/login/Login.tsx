@@ -1,6 +1,6 @@
 import { useAuth } from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/button/Button';
 import { FormEvent, useState } from 'react';
 import illustrationGift from '../../assets/images/illustration.gif';
 import logoImage from '../../assets/images/logo.svg';
@@ -170,6 +170,7 @@ export function Login() {
 							<input
 								type="text"
 								placeholder="Digite um código da sala"
+								required
 								onChange={event => setRoomCode(event.target.value)}
 								value={roomCode}
 							/>
