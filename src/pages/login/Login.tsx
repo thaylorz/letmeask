@@ -105,6 +105,7 @@ export function Login() {
 								onChange={event => setAuthEmail(event.target.value)}
 								value={authEmail}
 								required
+								autoComplete="on"
 							/>
 							<input
 								type="password"
@@ -112,6 +113,7 @@ export function Login() {
 								onChange={event => setAuthPassword(event.target.value)}
 								value={authPassword}
 								required
+								autoComplete="current-password"
 							/>
 							<div className="login-button-content">
 								<Button
