@@ -5,15 +5,24 @@
 
   aside {
     flex: 7;
-    background-color: #835afd;
+    background-color: #2c7ef8;
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px, 80px;
+    align-items: center;
+  }
+
+  .aside-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 460px;
+    gap: 24px;
 
     img {
-      max-width: 320px;
+      max-width: 500px;
     }
 
     strong {
@@ -43,11 +52,30 @@
     flex-direction: column;
     width: 100%;
     max-width: 320px;
-    align-items: stretch;
+    align-items: center;
     text-align: center;
+    gap: 24px;
+
+    div {
+      width: 100%;
+    }
 
     > img {
       align-self: center;
+    }
+
+    .login-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .login-button-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
     }
 
     h2 {
@@ -57,6 +85,10 @@
     }
 
     form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
       input {
         height: 50px;
         border-radius: 8px;
@@ -66,7 +98,7 @@
       }
 
       button {
-        margin-top: 16px;
+        margin-top: 24px;
       }
 
       button,
@@ -81,38 +113,14 @@
       margin-top: 16px;
 
       a {
-        color: #e559f9;
+        color: #317ff3;
       }
-    }
-  }
-
-  .create-room {
-    margin-top: 64px;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 500;
-    background: #ea4335;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 0;
-    transition: filter 0.2s;
-
-    img {
-      margin-right: 8px;
-    }
-
-    &:hover {
-      filter: brightness(0.9);
     }
   }
 
   .separator {
     font-size: 14px;
     color: #a8a8b3;
-    margin: 32px 0;
     display: flex;
     align-items: center;
 
