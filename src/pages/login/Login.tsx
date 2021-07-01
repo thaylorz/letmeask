@@ -9,11 +9,12 @@ import facebookIconImage from '../../assets/images/facebook-icon.svg';
 import appleIconImage from '../../assets/images/apple-icon.svg';
 import githubIconImage from '../../assets/images/github-icon.svg';
 import './login.scss';
+import '../../styles/social-midia-button-content.scss'
 import { database } from '../../services/firebase';
 
 export function Login() {
 	const history = useHistory();
-	const { user, loginInWithGoogle } = useAuth();
+	const { user, loginInWithGoogle, loginInWithGithub } = useAuth();
 	const [roomCode, setRoomCode] = useState('');
 	const [authEmail, setAuthEmail] = useState('');
 	const [authPassword, setAuthPassword] = useState('');
@@ -48,7 +49,7 @@ export function Login() {
 
 	async function handleLoginWithGithub() {
 		if (!user) {
-			await loginInWithGoogle();
+			await loginInWithGithub();
 		}
 
 		history.push('/rooms/new');
@@ -109,7 +110,7 @@ export function Login() {
 							/>
 							<input
 								type="password"
-								placeholder="Password"
+								placeholder="Senha"
 								onChange={event => setAuthPassword(event.target.value)}
 								value={authPassword}
 								required
@@ -118,7 +119,7 @@ export function Login() {
 							<div className="login-button-content">
 								<Button
 									type="submit"
-									text="Sign in"
+									text="Entrar"
 									styleButton={
 										{
 											backgroundColor: "#fff",
@@ -129,7 +130,7 @@ export function Login() {
 								/>
 								<Button
 									type="button"
-									text="Sign up"
+									text="Inscrever-se"
 									styleButton={{ backgroundColor: "#317FF3" }}
 									onClick={handleSignUpNewUser}
 								/>
