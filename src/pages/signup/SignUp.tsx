@@ -10,6 +10,7 @@ import appleIconImage from '../../assets/images/apple-icon.svg';
 import githubIconImage from '../../assets/images/github-icon.svg';
 import './sign-up.scss';
 import '../../styles/social-midia-button-content.scss'
+import { Modal } from '../../components/modal/Modal';
 
 export function SignUp() {
     const history = useHistory();
@@ -19,11 +20,11 @@ export function SignUp() {
     const [authPassword, setAuthPassword] = useState('');
     const [authName, setAuthName] = useState('');
 
-    async function handleSignUpNewUser(event: FormEvent) {
-        event.preventDefault();
+    // async function handleSignUpNewUser(event: FormEvent) {
+    //     event.preventDefault();
 
-        history.push('/signup');
-    }
+    //     history.push('/signup');
+    // }
 
     async function handleLoginWithApple() {
         if (!user) {
@@ -59,8 +60,6 @@ export function SignUp() {
 
     async function handleCreateNewUser(event: FormEvent) {
         event.preventDefault();
-
-        debugger;
 
         if (!user) {
             await createNewUser(authName, authEmail, authPassword);
@@ -145,6 +144,7 @@ export function SignUp() {
                     <p>já tem uma conta? <Link to="/">Entrar →</Link></p>
                 </div>
             </main>
+            <Modal />
         </div>
     )
 }

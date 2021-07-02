@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../services/firebase";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
+import { useModal } from "../hooks/useModal";
 
 type AuthContextType = {
     user: UserType | undefined;
@@ -16,6 +17,8 @@ type AuthContextProviderProps = {
     children: ReactNode
 };
 
+export const AuthContext = createContext({} as AuthContextType);
+
 const getErrorMessage = (errorType: string | number) => ({
     'auth/email-already-in-use': 'Já existir uma conta com o endereço de e-mail fornecido.',
     'auth/invalid-email': 'Endereço de e-mail não é valido.',
@@ -24,16 +27,14 @@ const getErrorMessage = (errorType: string | number) => ({
     '400': 'Endereço de e-mail inválido.'
 })[errorType] || 'Não foi possível realizar o cadastro.';
 
-export const AuthContext = createContext({} as AuthContextType);
-
 export function AuthContextProvider(props: AuthContextProviderProps) {
     const history = useHistory();
+    const { openModel } = useModal();
     const [user, setUser] = useState<UserType>();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                console.log(user);
                 setUser(user);
                 // history.push('/rooms/new');
             }
@@ -54,20 +55,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
                     history.push('/rooms/new');
                 }
-            }).catch(error => window.alert(getErrorMessage(error.code)))
+            }).catch(error => openModel(getErrorMessage(error.code)))
     }
-
-    // async function loginWithEmail(email: string, password: string) {
-    //     const { user } = await auth.signInWithEmailAndPassword(email, password);
-
-    //     if (user) {
-    //         if (!user.displayName || !user.photoURL) {
-    //             throw new Error('Missing information from Google Account.')
-    //         }
-
-    //         setUser(user);
-    //     }
-    // }
 
     async function loginInWithGoogle() {
         const provider = new firebase.auth.GoogleAuthProvider();

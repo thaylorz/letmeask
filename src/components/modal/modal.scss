@@ -1,0 +1,48 @@
+.overlay-modal {
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(36, 38, 51, 0.727);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modal-warper {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    inset: 40px;
+    background: #ffffff;
+    overflow: auto;
+    border-radius: 20px;
+    outline: none;
+    padding: 40px;
+    margin: auto;
+    box-sizing: border-box;
+    display: block;
+    box-shadow: 0 5px 20px #00000091;
+}
+
+.modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        max-width: 175px;
+        max-height: 175px;
+    }
+
+    p {
+        font-weight: 500;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    button {
+        width: 150px;
+    }
+}
