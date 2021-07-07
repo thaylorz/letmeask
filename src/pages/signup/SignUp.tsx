@@ -3,14 +3,13 @@ import { Button } from '../../components/button/Button';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import logoImage from '../../assets/images/logo.svg';
-import illustrationGift from '../../assets/images/illustration.gif';
+import illustrationGift from '../../assets/images/illustration-2.gif';
 import googleIconImage from '../../assets/images/google-icon.svg';
 import facebookIconImage from '../../assets/images/facebook-icon.svg';
 import appleIconImage from '../../assets/images/apple-icon.svg';
 import githubIconImage from '../../assets/images/github-icon.svg';
 import './sign-up.scss';
 import '../../styles/social-midia-button-content.scss'
-import { Modal } from '../../components/modal/Modal';
 
 export function SignUp() {
     const history = useHistory();
@@ -71,8 +70,7 @@ export function SignUp() {
             <aside>
                 <div className="aside-content">
                     <img src={illustrationGift} alt="Ilustração simbolizando perguntas e repostas" />
-                    <strong>Toda pergunta tem uma resposta</strong>
-                    <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
+                    <p>A melhor maneira de conseguir respostas melhores é começar fazendo perguntas melhores.</p>
                 </div>
             </aside>
 
@@ -144,7 +142,6 @@ export function SignUp() {
                     <p>já tem uma conta? <Link to="/">Entrar →</Link></p>
                 </div>
             </main>
-            <Modal />
         </div>
     )
 }

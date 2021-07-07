@@ -8,6 +8,7 @@ type AuthContextType = {
     user: UserType | undefined;
     loginInWithGoogle: () => Promise<void>;
     loginInWithGithub: () => Promise<void>;
+    loginInWithEmailAndPassword: (email: string, password: string) => Promise<void>;
     createNewUser: (name: string, email: string, password: string) => Promise<void>;
 };
 
@@ -24,6 +25,9 @@ const getErrorMessage = (errorType: string | number) => ({
     'auth/invalid-email': 'Endereço de e-mail não é valido.',
     'auth/operation-not-allowed': 'As contas de e-mail / senha não estão ativadas. Ative as contas de e-mail / senha no Firebase console, na guia Auth.',
     'auth/weak-password': 'A senha não é forte o suficiente.',
+    'auth/user-disabled': 'Usuário desativo.',
+    'auth/user-not-found': 'E-mail não encontrado.',
+    'auth/wrong-password': 'E-mail ou senha inválidos.',
     '400': 'Endereço de e-mail inválido.'
 })[errorType] || 'Não foi possível realizar o cadastro.';
 
@@ -47,15 +51,17 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     async function createNewUser(name: string, email: string, password: string) {
         await auth.createUserWithEmailAndPassword(email, password)
-            .then(UserCredential => {
-                if (UserCredential.user) {
-                    UserCredential.user.displayName = name;
-
+            .then(({ user }) => {
+                if (user) {
                     setUser(user);
 
                     history.push('/rooms/new');
                 }
-            }).catch(error => openModel(getErrorMessage(error.code)))
+            }).catch(error => {
+                debugger;
+
+                openModel(getErrorMessage(error.code))
+            })
     }
 
     async function loginInWithGoogle() {
@@ -76,8 +82,20 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         }
     }
 
+    async function loginInWithEmailAndPassword(email: string, password: string) {
+        await auth.signInWithEmailAndPassword(email, password)
+            .then(UserCredential => {
+                if (UserCredential.user) {
+                    setUser(user);
+
+                    history.push('/rooms/new');
+                }
+            })
+            .catch(error => openModel(getErrorMessage(error.code)));
+    }
+
     return (
-        <AuthContext.Provider value={{ user, loginInWithGoogle, loginInWithGithub, createNewUser }}>
+        <AuthContext.Provider value={{ user, loginInWithGoogle, loginInWithGithub, loginInWithEmailAndPassword, createNewUser }}>
             {props.children}
         </AuthContext.Provider>
     )

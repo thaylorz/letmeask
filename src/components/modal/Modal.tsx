@@ -13,8 +13,10 @@ export function Modal() {
 
     return (
         <ReactModal
+            portalClassName='react-modal-portal'
             overlayClassName='overlay-modal'
             className='modal-warper'
+            parentSelector={() => document.body}
             isOpen={isOpen}
             ariaHideApp={false}
             shouldFocusAfterRender

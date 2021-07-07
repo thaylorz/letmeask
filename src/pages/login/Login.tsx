@@ -14,13 +14,15 @@ import { database } from '../../services/firebase';
 
 export function Login() {
 	const history = useHistory();
-	const { user, loginInWithGoogle, loginInWithGithub } = useAuth();
+	const { user, loginInWithGoogle, loginInWithGithub, loginInWithEmailAndPassword } = useAuth();
 	const [roomCode, setRoomCode] = useState('');
 	const [authEmail, setAuthEmail] = useState('');
 	const [authPassword, setAuthPassword] = useState('');
 
-	async function handleLoginWithEmail(event: FormEvent) {
+	async function handleLoginInWithEmailAndPassword(event: FormEvent) {
 		event.preventDefault();
+
+		loginInWithEmailAndPassword(authEmail, authPassword);
 
 		return;
 	}
@@ -99,7 +101,7 @@ export function Login() {
 				<div className="main-content">
 					<img src={logoImage} alt="Letmeask" />
 					<div className="login-wrapper">
-						<form className="login-form" onSubmit={handleLoginWithEmail}>
+						<form className="login-form" onSubmit={handleLoginInWithEmailAndPassword}>
 							<input
 								type="email"
 								placeholder="Email"

@@ -6,6 +6,7 @@ import { ModalContextProvider } from './contexts/ModalContext'
 import { Room } from './pages/room/Room';
 import { AdminRoom } from './pages/adminroom/AdminRoom';
 import { SignUp } from './pages/signup/SignUp';
+import { Modal } from './components/modal/Modal';
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 						<Route path="/rooms/:id" component={Room} />
 						<Route path="/admin/rooms/:id" component={AdminRoom} />
 					</Switch>
+					<Modal />
 				</AuthContextProvider>
 			</ModalContextProvider>
 		</BrowserRouter>
