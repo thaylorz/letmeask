@@ -1,7 +1,7 @@
 import { useAuth } from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/button/Button';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import illustrationGift from '../../assets/images/illustration.gif';
 import logoImage from '../../assets/images/logo.svg';
 import googleIconImage from '../../assets/images/google-icon.svg';
@@ -23,8 +23,6 @@ export function Login() {
 		event.preventDefault();
 
 		loginInWithEmailAndPassword(authEmail, authPassword);
-
-		return;
 	}
 
 	async function handleSignUpNewUser(event: FormEvent) {
@@ -86,6 +84,12 @@ export function Login() {
 
 		history.push(`/rooms/${roomCode}`);
 	}
+
+	useEffect(() => {
+		if (user) {
+			history.push('/rooms/new');
+		}
+	}, [history, user]);
 
 	return (
 		<div id="page-auth">
