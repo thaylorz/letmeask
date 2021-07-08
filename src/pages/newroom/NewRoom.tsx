@@ -31,11 +31,13 @@ export function NewRoom() {
 	}
 
 	return (
-		<div id="page-auth">
+		<div className="page-new-room">
 			<aside>
-				<img src={illustrationGift} alt="Ilustração simbolizando perguntas e repostas" />
-				<strong>Crie salas de Q&amp;A ao-vivo</strong>
-				<p>Tire as dúvidas da sua audiência em tempo-real</p>
+				<div className="aside-content">
+					<img src={illustrationGift} alt="Ilustração simbolizando perguntas e repostas" />
+					<strong>Crie salas de Q&amp;A ao-vivo</strong>
+					<p>Tire as dúvidas da sua audiência em tempo-real</p>
+				</div>
 			</aside>
 
 			<main>
@@ -49,7 +51,11 @@ export function NewRoom() {
 							onChange={event => setNewRoom(event.target.value)}
 							value={newRoom}
 						/>
-						<Button type="submit"><span>Criar sala</span></Button>
+						<Button
+							type="submit"
+							text="Criar sala"
+							styleButton={{ backgroundColor: "#317FF3" }}
+						/>
 					</form>
 					<p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
 				</div>

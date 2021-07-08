@@ -7,6 +7,7 @@ import { RoomCode } from '../../components/roomcode/RoomCode';
 import { useAuth } from '../../hooks/useAuth';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
+import defaultAvatarImage from '../../assets/images/default-avatar.png';
 import './room.scss';
 
 type RoomParams = {
@@ -82,13 +83,24 @@ export function Room() {
                     <div className="form-footer">
                         {user ? (
                             <div className="user-info">
-                                <img src={user.photoURL || undefined} alt={user.displayName || undefined} />
-                                <span>{user.displayName}</span>
+                                <img src={user.photoURL || defaultAvatarImage} alt={user.displayName || 'User'} />
+                                <span>{user.displayName || 'User'}</span>
                             </div>
                         ) : (
                             <span>Para enviar uma pergunta, <button>faça seu login</button></span>
                         )}
-                        <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+                        <Button
+                            type="submit"
+                            disabled={!user}
+                            text="Enviar pergunta"
+                            styleButton={
+                                {
+                                    backgroundColor: "#fff",
+                                    border: "1px solid #317ff3",
+                                    color: "#317ff3"
+                                }
+                            }
+                        />
                     </div>
                 </form>
 
