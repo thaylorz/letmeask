@@ -1,4 +1,4 @@
-![src/assets/images/logo.svg](Untitled%203cc0d2a7728d490995a3508371219db7/logo.svg)
+![src/assets/images/logo.svg](https://github.com/thaylorz/letmeask/blob/master/src/assets/images/logo.svg)
 
 Letmeask
 
