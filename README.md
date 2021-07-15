@@ -36,8 +36,6 @@ $ yarn start
 
 O aplicativo estará disponível para acesso em seu navegador em [http://localhost:3000](http://localhost:3000)
 
-Fique a vontade para clonar o projeto e fazer 
-
 ---
 
 ## 🆘 Contribuir
