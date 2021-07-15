@@ -18,7 +18,7 @@ function App() {
 						<Route path="/signup" exact component={SignUp}></Route>
 						<Route path="/rooms/new" exact component={NewRoom} />
 						<Route path="/rooms/:id" component={Room} />
-						<Route path="/admin/rooms/:id" component={AdminRoom} />
+						<Route path="/admin/room/:id" component={AdminRoom} />
 					</Switch>
 					<Modal />
 				</AuthContextProvider>
