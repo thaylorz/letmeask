@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+![src/assets/images/logo.svg](Untitled%203cc0d2a7728d490995a3508371219db7/logo.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Letmeask
 
-## Available Scripts
+Projeto desenvolvido no bootcamp [NLW/Together] - 🚀[Rocketseat](https://rocketseat.com.br/) com o intuito de facilitar os criadores de conteúdo que precisam organizar as perguntas enviadas por sua audiência mas incrementando novas funcionalidades não tratadas no bootcamping.
 
-In the project directory, you can run:
+Foi utilizado o framework [React](https://reactjs.org/) + [Typescript](https://www.typescriptlang.org/) junto com [Sass](https://sass-lang.com/) para estilização dos componentes e o [Firabase](https://firebase.google.com/) como serverless da nossa aplicação.
 
-### `yarn start`
+Quer ver como está ficando? Acesse a demonstração.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Contribuir
 
-### `yarn test`
+Quer contribuir com o projeto, siga o passo a passo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Crie um fork!
+2. Crie sua feature branch: `git checkout -b my-new-feature`
+3. Adicione os arquivos modificados: `git add .`
+4. Faça um Commit com suas alterações: `git commit -m "Add some feature"`
+5. Faça um push da sua branch: `git push origin my-new-feature`
+6. Envie um Pull Request para esse repositório 
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Adicione um título e uma descrição que deixe claro sua sugestão :)
