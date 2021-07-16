@@ -10,7 +10,7 @@ Projeto desenvolvido no bootcamp [NLW/Together] - [Rocketseat](https://rocketsea
 
 ---
 
- 🧪 Tecnologias
+## 🧪 Tecnologias
 
 Foi utilizado o framework [React](https://reactjs.org/) + [Typescript](https://www.typescriptlang.org/) junto com [Sass](https://sass-lang.com/) para estilização dos componentes e o [Firabase](https://firebase.google.com/) como serverless da nossa aplicação.
 
