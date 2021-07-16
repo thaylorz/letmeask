@@ -12,7 +12,7 @@ type AuthContextType = {
     createNewUser: (name: string, email: string, password: string) => Promise<void>;
 };
 
-type UserType = firebase.User | null;
+export type UserType = firebase.User | null;
 
 type AuthContextProviderProps = {
     children: ReactNode
@@ -40,9 +40,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 console.log(`${user?.displayName} entrou na aplicação`);
+                return;
             }
-
-            console.log(`${user?.displayName} saiu na aplicação`);
         })
 
         return () => {
@@ -68,13 +67,9 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 if (user) {
                     setUser(user);
 
-                    history.push('/rooms/new');
+                    history.push('/dashboard');
                 }
-            }).catch(error => {
-                debugger;
-
-                openModel(getErrorMessage(error.code))
-            })
+            }).catch(error => openModel(getErrorMessage(error.code)))
     }
 
     async function loginInWithGoogle() {
@@ -101,7 +96,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 if (UserCredential.user) {
                     setUser(user);
 
-                    history.push('/rooms/new');
+                    history.push('/dashboard');
                 }
             })
             .catch(error => openModel(getErrorMessage(error.code)));

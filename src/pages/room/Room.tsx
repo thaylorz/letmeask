@@ -9,6 +9,9 @@ import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 import defaultAvatarImage from '../../assets/images/default-avatar.png';
 import './room.scss';
+import { Header } from '../../components/header/Header';
+import { MainContainer } from '../../components/maincontainer/MainContainer';
+import UserMenu from '../../components/usermenu/UserMenu';
 
 type RoomParams = {
     id: string;
@@ -60,15 +63,14 @@ export function Room() {
     }
 
     return (
-        <div id="page-room">
-            <header>
-                <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                    <RoomCode code={roomId} />
-                </div>
-            </header>
+        <div className="room-page">
+            <Header>
+                <img src={logoImg} alt="Letmeask" />
+                <RoomCode code={roomId} />
+                <UserMenu />
+            </Header>
 
-            <main className="content">
+            <MainContainer>
                 <div className="room-title">
                     <h1>Sala {title}</h1>
                     {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
@@ -131,7 +133,7 @@ export function Room() {
                         );
                     })}
                 </div>
-            </main>
+            </MainContainer>
         </div>
     )
 }

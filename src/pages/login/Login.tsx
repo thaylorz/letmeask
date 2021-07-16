@@ -36,7 +36,7 @@ export function Login() {
 			await loginInWithGoogle();
 		}
 
-		history.push('/rooms/new');
+		history.push('/dashboard');
 	}
 
 	async function handleLoginWithFacebook() {
@@ -44,7 +44,7 @@ export function Login() {
 			await loginInWithGoogle();
 		}
 
-		history.push('/rooms/new');
+		history.push('/dashboard');
 	}
 
 	async function handleLoginWithGithub() {
@@ -52,7 +52,7 @@ export function Login() {
 			await loginInWithGithub();
 		}
 
-		history.push('/rooms/new');
+		history.push('/dashboard');
 	}
 
 	async function handleLoginWithGoogle() {
@@ -60,7 +60,7 @@ export function Login() {
 			await loginInWithGoogle();
 		}
 
-		history.push('/rooms/new');
+		history.push('/dashboard');
 	}
 
 	async function handleJoinRoom(event: FormEvent) {
