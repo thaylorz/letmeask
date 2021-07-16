@@ -17,6 +17,7 @@ Foi utilizado o framework [React](https://reactjs.org/) + [Typescript](https://w
 - [React](https://reactjs.org/)
 - [Firebase](https://firebase.google.com/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
 
 Quer ver como está ficando? [Acesse a demonstração](https://letmeask-mu-orpin.vercel.app/) que está hospedada na [Vercel](https://vercel.com/)[.](https://letmeask-mu-orpin.vercel.app/)
 
