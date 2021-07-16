@@ -2,8 +2,6 @@ import { useHistory } from 'react-router-dom';
 import logoImg from '../../assets/images/logo.svg';
 import { Button } from '../../components/button/Button';
 import { Header } from '../../components/header/Header';
-import dropDownImage from '../../assets/images/drop-down.svg';
-import { useAuth } from '../../hooks/useAuth';
 import './dashboard.scss';
 import { useRooms } from '../../hooks/useRooms';
 import { List } from '../../components/list/List';
@@ -12,7 +10,6 @@ import { database } from '../../services/firebase';
 import UserMenu from '../../components/usermenu/UserMenu';
 
 export function Dashboard() {
-    const { user } = useAuth();
     const { rooms } = useRooms();
     const history = useHistory();
 
