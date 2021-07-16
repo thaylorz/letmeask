@@ -9,6 +9,7 @@ import { RoomCode } from '../../components/roomcode/RoomCode';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 import './admin-room.scss';
+import UserAvatar from '../../components/useravatar/UserAvatar';
 
 type RoomParams = {
     id: string;
@@ -53,7 +54,19 @@ export function AdminRoom() {
                     <img src={logoImg} alt="Letmeask" />
                     <div>
                         <RoomCode code={roomId} />
-                        <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+                        <Button
+                            isOutlined
+                            onClick={handleEndRoom}
+                            text="Encerrar sala"
+                            styleButton={
+                                {
+                                    backgroundColor: "#F44336",
+                                    borderColor: "#F44336",
+                                    color: "#fff"
+                                }
+                            }
+                        />
+                        <UserAvatar />
                     </div>
                 </div>
             </header>

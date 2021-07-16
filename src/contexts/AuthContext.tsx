@@ -39,10 +39,23 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                setUser(user);
-                // history.push('/rooms/new');
+                console.log(`${user?.displayName} entrou na aplicação`);
             }
+
+            console.log(`${user?.displayName} saiu na aplicação`);
         })
+
+        return () => {
+            unsubscribe();
+        };
+    }, []);
+
+    useEffect(() => {
+        const unsubscribe = auth.onIdTokenChanged(user => {
+            if (user) {
+                setUser(user);
+            }
+        });
 
         return () => {
             unsubscribe();
