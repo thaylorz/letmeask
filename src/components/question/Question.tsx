@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import UserAvatar from '../useravatar/UserAvatar';
 import './question.scss';
 
 type QuestionProps = {
@@ -23,10 +24,7 @@ export function Question({
         <div className={`question ${isAnswered ? 'answered' : ''} ${isHighlighted && !isAnswered ? 'highlighted' : ''}`}>
             <p>{content}</p>
             <footer>
-                <div className="user-info">
-                    <img src={author.avatar} alt={author.name} />
-                    <span>{author.name}</span>
-                </div>
+                <UserAvatar />
                 <div>
                     {children}
                 </div>
