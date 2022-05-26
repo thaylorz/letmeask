@@ -9,7 +9,9 @@ import { RoomCode } from '../../components/roomcode/RoomCode';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 import './admin-room.scss';
-import UserAvatar from '../../components/useravatar/UserAvatar';
+import { Header } from '../../components/header/Header';
+import { MainContainer } from '../../components/maincontainer/MainContainer';
+import UserMenu from '../../components/usermenu/UserMenu';
 
 type RoomParams = {
     id: string;
@@ -49,29 +51,27 @@ export function AdminRoom() {
 
     return (
         <div id="page-room">
-            <header>
-                <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                    <div>
-                        <RoomCode code={roomId} />
-                        <Button
-                            isOutlined
-                            onClick={handleEndRoom}
-                            text="Encerrar sala"
-                            styleButton={
-                                {
-                                    backgroundColor: "#F44336",
-                                    borderColor: "#F44336",
-                                    color: "#fff"
-                                }
+            <Header>
+                <img src={logoImg} alt="Letmeask" />
+                <div>
+                    <RoomCode code={roomId} />
+                    <Button
+                        isOutlined
+                        onClick={handleEndRoom}
+                        text="Encerrar sala"
+                        styleButton={
+                            {
+                                backgroundColor: "#F44336",
+                                borderColor: "#F44336",
+                                color: "#fff"
                             }
-                        />
-                        <UserAvatar />
-                    </div>
+                        }
+                    />
+                    <UserMenu />
                 </div>
-            </header>
+            </Header>
 
-            <main className="content">
+            <MainContainer>
                 <div className="room-title">
                     <h1>Sala {title}</h1>
                     {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
@@ -113,7 +113,7 @@ export function AdminRoom() {
                         );
                     })}
                 </div>
-            </main>
+            </MainContainer>
         </div>
     )
 }
